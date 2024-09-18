@@ -26,8 +26,13 @@
     "typescript": "^5.6.2"
   },
   "dependencies": {
+    "@types/multer": "^1.4.12",
+    "@types/uuid": "^10.0.0",
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.6",
-    "mongodb": "^6.9.0"
+    "dotenv": "^16.4.5",
+    "mongodb": "^6.9.0",
+    "multer": "^1.4.5-lts.1",
+    "uuid": "^10.0.0"
   }
 }

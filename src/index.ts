@@ -4,10 +4,9 @@ import cors from 'cors';
 import compression from 'compression';
 import cookieParser from 'cookie-parser';
 import { Bootstrap } from './Modules/bootstrap';
-import { dbconn } from './DataBase/dbConnection'; // Adjust the import path as necessary
-
+import { dbconn } from './DataBase/dbConnection'; 
 const app = express();
-const port = 8080; // Port can be changed based on your preference
+const port = 8080; 
 
 app.use(express.json());
 app.use(cors({ credentials: true }));
@@ -15,13 +14,9 @@ app.use(compression());
 app.use(cookieParser());
 
 Bootstrap(app);
-
-// Basic route
 app.get('/', (req: express.Request, res: express.Response) => {
   res.send(`<h1>Hi</h1>`);
 });
-
-// Connect to MongoDB and start the server
 dbconn
   .then(() => {
     console.log('Database connected successfully');
