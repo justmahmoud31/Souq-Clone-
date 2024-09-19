@@ -1,22 +1,20 @@
 import { Request, Response, NextFunction } from "express";
 import { ProductModel } from "../../DataBase/Models/product";
 import { AppError } from "../../utils/Apperror";
-
-const addProduct = async (req: Request , res: Response, next: NextFunction) => {
+const addProduct = async (req: Request, res: Response, next: NextFunction) => {
     try {
-
         const productData = {
             ...req.body,
-        };    
+        };
         const product = new ProductModel(productData);
         await product.save();
 
         res.status(200).json({
-            Message: "Success",
+            message: "Product created successfully!",
             product
         });
     } catch (err) {
-        return next(new AppError(`Error ${err}`, 500));
+        next(new AppError(`Error: ${err}`, 500));
     }
 };
 const getAllProducts = async (req: Request, res: Response, next: NextFunction) => {
@@ -40,6 +38,7 @@ const getOneProduct = async (req: Request, res: Response, next: NextFunction) =>
         return next(new AppError(`Error ${err}`, 500));
     }
 };
+
 export default {
     getAllProducts,
     getOneProduct,
